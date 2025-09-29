@@ -1,5 +1,3 @@
-Got it 👍 Here’s a **README.md** for your **Read Aloud Website Content Script** using Playwright + TTS:
-
 ````markdown
 # 🔊 Website Read Aloud Utility
 
