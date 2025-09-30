@@ -1,6 +1,3 @@
----
-
-```markdown
 # 🐍 Python Utils 2
 
 A collection of Python utility scripts and experiments for automation, data processing, visualization, translation, and multimedia tasks.  
