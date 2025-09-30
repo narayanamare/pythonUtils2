@@ -1,94 +1,164 @@
-````markdown
-# 🔊 Website Read Aloud Utility
+---
 
-This Python utility fetches the content of a webpage and **reads it aloud** using Text-to-Speech (TTS).  
-It is built with [Playwright](https://playwright.dev/python/) to reliably extract webpage text and [pyttsx3](https://pyttsx3.readthedocs.io/) for offline speech synthesis.
+```markdown
+# 🐍 Python Utils 2
+
+A collection of Python utility scripts and experiments for automation, data processing, visualization, translation, and multimedia tasks.  
+This repo is a **toolbox of independent scripts** — each utility solves a specific problem and can be used standalone or imported into your own projects.
 
 ---
 
-## 🚀 Features
-- Fetch any webpage text content using **Playwright**.
-- Converts extracted text to **speech**.
-- Works **offline** (no API calls needed).
-- Cross-platform (Windows, macOS, Linux).
+## 📂 Repository Structure
 
----
+```
 
-## 📦 Requirements
+pythonUtils2/
+│
+├── audio_tools/
+│   ├── readaloud.py          # Read website text aloud (requests + TTS)
+│   ├── readaloud2.py         # Playwright-based web read-aloud
+│
+├── web_tools/
+│   ├── GoogleMapsSearch.py   # Automate Google Maps search & scrape
+│   ├── GooglePlaces.py       # Extract business details via Google Places
+│   ├── ClickAndExtractListings.py  # Click-through scraping utility
+│
+├── video_tools/
+│   ├── movietext.py          # Add text overlay to video
+│   ├── movietxt3.py
+│
+├── translate_tools/
+│   ├── TranslateEngtoMar.py  # English → Marathi translation
+│   ├── TranslateEngtoMar2.py
+│   └── TranslateEngtoMar3.py
+│
+├── storyline_tools/
+│   └── storyline.py          # Storyline visualization (character interactions)
+│
+└── README.md
 
-Install dependencies:
-```bash
-pip install playwright pyttsx3
-playwright install
 ````
 
 ---
 
-## 🛠️ Usage
+## 🚀 Features
 
-1. Clone this repo or copy the script `readaloud.py`.
-2. Run the script with a target URL:
+- **Audio Tools**
+  - Read aloud any website content using TTS (`pyttsx3`) or Playwright-based rendering for JS-heavy sites.
+  - Save narration to audio files.
 
-   ```bash
-   python readaloud.py
-   ```
+- **Web Tools**
+  - Automate Google Maps search and extract location/business details.
+  - Google Places scraping utility.
+  - Click-through navigation & listing extraction with Playwright.
 
-By default, the script reads a pre-set article.
-To change the target page, update the `url` variable inside the script:
+- **Video Tools**
+  - Overlay text or captions on `.mp4` files (using `moviepy` and `Pillow`).
 
-```python
-url = "https://www.example.com/article"
-```
+- **Translation Tools**
+  - Translate English → Marathi (multiple approaches using APIs / libraries).
 
----
-
-## ⚙️ How It Works
-
-1. **Playwright** launches a headless browser and navigates to the webpage.
-2. The script extracts visible text content (`page.inner_text("body")`).
-3. **pyttsx3** reads the text aloud in the system’s default voice.
+- **Storyline Tools**
+  - Visualize character interactions across a storyline over time.
 
 ---
 
-## ✅ Example
+## 🛠 Installation
+
+1. Clone this repository:
 
 ```bash
-python readaloud.py
+git clone https://github.com/narayanamare/pythonUtils2.git
+cd pythonUtils2
+````
+
+2. Create and activate a virtual environment:
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Linux / Mac
+.venv\Scripts\activate      # Windows
 ```
 
-🎧 Output: The script will start reading the article text aloud.
+3. Install dependencies:
 
----
+```bash
+pip install -r requirements.txt
+```
 
-## ⚠️ Troubleshooting
+> ⚠️ For Playwright-based scripts, you also need to install the browser binaries:
 
-* **TimeoutError on `page.goto`**
-  Some websites block headless browsers.
-
-  * Try adding a `user_agent` or use `wait_until="load"` instead of `"networkidle"`.
-  * Example:
-
-    ```python
-    await page.goto(url, wait_until="load")
-    ```
-
-* **Voice too fast/slow?**
-  Adjust the rate in the script:
-
-  ```python
-  engine.setProperty("rate", 160)
-  ```
-
----
-
-## 📚 References
-
-* [Playwright Python Docs](https://playwright.dev/python/docs/intro)
-* [pyttsx3 Docs](https://pyttsx3.readthedocs.io/)
-
+```bash
+playwright install
 ```
 
 ---
 
-👉 Do you want me to also include a **Playwright-based fallback with gTTS** (Google TTS, better voice quality but needs internet), or keep it **offline only**?
+## 📖 Usage
+
+Each script can be run independently. Example:
+
+### 1. Read Aloud (Requests-based)
+
+```bash
+python audio_tools/readaloud.py
+```
+
+Edit the script to provide a target URL or pass it as an argument.
+
+### 2. Read Aloud (Playwright-based)
+
+```bash
+python audio_tools/readaloud2.py
+```
+
+### 3. Add Text to Video
+
+```bash
+python video_tools/movietext.py
+```
+
+Make sure you provide a valid input video path inside the script.
+
+### 4. Translate English → Marathi
+
+```bash
+python translate_tools/TranslateEngtoMar.py
+```
+
+### 5. Storyline Visualization
+
+```bash
+python storyline_tools/storyline.py
+```
+
+---
+
+## 📌 Notes
+
+* Some scripts depend on third-party APIs (e.g., Google Places) — you may need API keys.
+* Ensure fonts are installed (for video text rendering).
+* Some utilities are experimental and may need tweaking for specific use cases.
+
+---
+
+## 🤝 Contributing
+
+This repo is a personal utility collection, but contributions are welcome:
+
+* Improve existing scripts
+* Add new utilities
+* Report issues and suggest enhancements
+
+---
+
+## 📜 License
+
+MIT License © 2025 Narayan Amare
+
+```
+
+---
+
+Would you like me to also generate a **`requirements.txt`** for your repo based on the dependencies your scripts use (Playwright, pyttsx3, moviepy, Pillow, matplotlib, etc.)?
 ```
