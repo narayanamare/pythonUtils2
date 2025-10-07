@@ -157,5 +157,3 @@ MIT License © 2025 Narayan Amare
 
 ---
 
-Would you like me to also generate a **`requirements.txt`** for your repo based on the dependencies your scripts use (Playwright, pyttsx3, moviepy, Pillow, matplotlib, etc.)?
-```
